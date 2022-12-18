@@ -28,9 +28,9 @@
 <a href="{% url 'inicio' %}" class="btn btn-secondary"> Volver </a>
 <br/><br/>
 
-    <div class="card mb-3" >
+    <div class="card mb-3"">
     <div class="row g-0">
-        <div class="col-md-2">
+        <div class="col-md-4">
 {% if object.autor.perfil.perfil_imagen %}
 
     <img src="{{ object.autor.perfil.perfil_imagen.url }}" class="card-img" >
@@ -41,7 +41,7 @@
     
 {% endif %}
         </div>
-        <div class="col-md-10">
+        <div class="col-md-8">
         <div class="card-body">
             <h5 class="card-title">
                 {{ object.autor.first_name}}
