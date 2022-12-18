@@ -1,0 +1,27 @@
+{% extends 'appblog/base.html' %}
+
+{% block titulo %}
+Crea un nuevo perfil
+{% endblock %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+    
+    <h1> Crear perfil... </h1>
+    <form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    {{form.as_p }}
+    <input type="submit" value="Crear perfil">
+    </form>
+        
+    </div>
+    
+{% else %}
+
+No has iniciado sesion
+
+{% endif %}
+
+{% endblock %}

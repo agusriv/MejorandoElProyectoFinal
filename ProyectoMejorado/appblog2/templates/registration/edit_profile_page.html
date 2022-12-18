@@ -1,0 +1,27 @@
+{% extends 'appblog/base.html' %}
+
+{% block titulo %}
+Editar perfil!!
+{% endblock %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+
+    <h1> Editar Perfil... </h1>
+    <form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    {{form.as_p }}
+    <input type="submit" value="Editar perfil">
+    </form>
+            
+    </div>
+    
+{% else %}
+
+No has iniciado sesion
+
+{% endif %}
+
+{% endblock %}

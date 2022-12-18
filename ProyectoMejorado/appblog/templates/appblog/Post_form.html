@@ -1,0 +1,36 @@
+{% extends 'appblog/base.html' %}
+
+{% block titulo %}
+Crea un nuevo post!
+{% endblock %}
+
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+    {% if perms.appblog.add_post %}
+        <h1> Agregar Posts... </h1>
+        <form method="post" enctype="multipart/form-data">
+
+        {% csrf_token %}
+        {{form.media}}
+        {{form.as_p }}
+        <input type="submit" value="Crear/Actualizar" class="btn btn-secondary">
+        </form>
+        
+        </div>
+    
+    {% else %}
+
+        <p>No tienes permisos de administrador </p>
+        <a href="{% url 'inicio'%}">Volver al listado</a><br/>
+    {% endif %}
+    
+{% else %}
+
+No has iniciado sesion
+
+{% endif %}
+
+{% endblock %}
+

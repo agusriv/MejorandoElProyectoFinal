@@ -1,0 +1,20 @@
+{% extends 'appblog/base.html' %}
+
+{% block titulo %}
+Register
+{% endblock %}
+
+{% block content %}
+
+
+<h1> Registrate aquí... </h1>
+<br>
+<form method="post">
+
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Registrar">
+</form>
+        
+</div>
+{% endblock %}
