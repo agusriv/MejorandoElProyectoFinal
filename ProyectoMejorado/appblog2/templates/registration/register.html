@@ -9,12 +9,12 @@ Register
 
 <h1> Registrate aquí... </h1>
 <br>
-<form method="post">
+<div class="form-group">
+    <form method="post">
 
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Registrar">
-</form>
-        
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Registrar">
+    </form>       
 </div>
 {% endblock %}

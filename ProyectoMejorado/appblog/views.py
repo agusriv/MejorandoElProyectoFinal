@@ -3,7 +3,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from appblog.models import Post
 from django.urls import reverse_lazy
 from appblog.models import Comment
-from appblog.forms import CommentForm
+from appblog.forms import CommentForm, PostForm, EditForm
 
 def about(request):
    return render(request, "appblog/about.html")
@@ -19,15 +19,17 @@ class PostDetail(DetailView):
 
 class PostCreate( CreateView):
     model = Post
-    success_url = ""
-    fields = "__all__"
+    form_class = PostForm
+    #success_url = ""
+    #fields = "__all__"
     template_name = "appblog/Post_form.html"
 
 
 class PostUpdate( UpdateView):
     model = Post
+    form_class = EditForm
     success_url = ""
-    fields = "__all__"
+    #fields = "__all__"
 
 class PostDelate( DeleteView):  
     model = Post
