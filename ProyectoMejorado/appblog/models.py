@@ -11,6 +11,10 @@ class Post(models.Model):
     cuerpo = RichTextField(blank=True, null=True)
     fecha = models.DateField(auto_now_add=True)
     descripcion = models.CharField(max_length=100, default='click en el link para leer mas')
+    likes = models.ManyToManyField(User, related_name='blog_post')
+
+    def TotalLikes(self):
+        return self.likes.count()
 
     def __str__(self):
         return self.titulo + ' | ' + str(self.autor)

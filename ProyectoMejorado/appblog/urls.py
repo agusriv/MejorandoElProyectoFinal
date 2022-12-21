@@ -1,5 +1,5 @@
 from django.urls import path
-from appblog.views import PostList, PostDetail, PostCreate, PostUpdate, PostDelate, about, CommentCreate
+from appblog.views import PostList, PostDetail, PostCreate, PostUpdate, PostDelate, about, CommentCreate, LikeView
 
 
 
@@ -11,4 +11,5 @@ urlpatterns = [
     path('editar/post/<pk>',PostUpdate.as_view(), name="actualizar-post" ),
     path("borrar/post/<pk>/", PostDelate.as_view(), name="borrar-post"),
     path('post/<pk>/comment/', CommentCreate.as_view(), name="agregar-comentario"),
+    path('like/<pk>', LikeView, name="like_post"),
 ]
