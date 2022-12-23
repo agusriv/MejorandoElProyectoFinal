@@ -41,3 +41,4 @@ class EditForm(forms.ModelForm):
             'descripcion': forms.TextInput(attrs={'class' : 'form-control'}),
 
         }
+

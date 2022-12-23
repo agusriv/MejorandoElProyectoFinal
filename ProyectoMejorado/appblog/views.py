@@ -5,10 +5,26 @@ from django.urls import reverse_lazy, reverse
 from appblog.models import Comment
 from appblog.forms import CommentForm, PostForm, EditForm
 from django.http import HttpResponseRedirect
+from django.core.mail import send_mail
+from django.contrib import messages
 
-def about(request):
-   return render(request, "appblog/about.html")
+def contact(request):
+    if request.method == 'POST': 
+        name = request.POST['name']
+        email = request.POST['email']
+        subject = request.POST['subject']
+        message = request.POST['message']
 
+        send_mail(
+            subject,
+            message,
+            email,
+            ['agustinriveratapi3@gmail.com']
+        )
+        messages.success(request, f'Se ha enviado tu correo {name}, a la brevedad recibiras una respuesta')
+        return render(request, 'appblog/contact.html', {'name':name})
+    else:
+        return render(request, 'appblog/contact.html', {})
 
 class PostList(ListView):
     model = Post
@@ -33,8 +49,6 @@ class PostDetail(DetailView):
 class PostCreate( CreateView):
     model = Post
     form_class = PostForm
-    #success_url = ""
-    #fields = "__all__"
     template_name = "appblog/Post_form.html"
 
 
@@ -42,7 +56,6 @@ class PostUpdate( UpdateView):
     model = Post
     form_class = EditForm
     success_url = ""
-    #fields = "__all__"
 
 class PostDelate( DeleteView):  
     model = Post

@@ -35,9 +35,9 @@
 
 {% if request.user.is_authenticated %}
     {% if liked %}
-        <button type="submit", name="post_id", value="{{post.id}}", class="btn btn-danger">Unlike <img src="https://cdn-icons-png.flaticon.com/128/4837/4837019.png" width="25" alt=""></button> - {{total_likes}} Likes
+        <button type="submit", name="post_id", value="{{post.id}}", class="btn btn-danger">No me gusta <img src="https://cdn-icons-png.flaticon.com/128/4837/4837019.png" width="25" alt=""></button> - {{total_likes}} Likes
     {% else %}
-        <button type="submit", name="post_id", value="{{post.id}}", class="btn btn-primary">Like <img src="https://cdn-icons-png.flaticon.com/128/2703/2703922.png" width="25" alt=""></button> - {{total_likes}} Likes
+        <button type="submit", name="post_id", value="{{post.id}}", class="btn btn-primary">Me gusta <img src="https://cdn-icons-png.flaticon.com/128/2703/2703922.png" width="25" alt=""></button> - {{total_likes}} Likes
     {% endif %}
 {% else %}
     <small><a href="{% url 'login' %}">Inicia sesión</a> para darle me gusta al post </small> - {{total_likes}} Likes
