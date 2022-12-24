@@ -27,9 +27,9 @@ class Perfil(models.Model):
     bio = models.TextField()
     perfil_imagen = models.ImageField(null=True, blank=True, upload_to="imagenes/perfil/")
     Instagram_url = models.CharField(max_length=255, null=True, blank=True)
-    github_url =  models.CharField(max_length=255, null=True, blank=True)
+    tik_tok =  models.CharField(max_length=255, null=True, blank=True)
     fb_url = models.CharField(max_length=255, null=True, blank=True)
-    web_url =  models.CharField(max_length=255, null=True, blank=True)
+    You_Tube =  models.CharField(max_length=255, null=True, blank=True)
     Twitter_url = models.CharField(max_length=255, null=True, blank=True)
     
 

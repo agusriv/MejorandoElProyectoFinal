@@ -48,59 +48,60 @@
 <hr>
 <br/><br/>
 
-    <div class="card mb-3"">
+
+<div class="card mb-3"">
     <div class="row g-0">
         <div class="col-md-4">
-{% if object.autor.perfil.perfil_imagen %}
-
-    <img src="{{ object.autor.perfil.perfil_imagen.url }}" class="card-img" >
-
-{% else %}
-
-    <img src="https://180dc.org/wp-content/uploads/2016/08/default-profile.png" class="card-img" >
-    
-{% endif %}
-        </div>
-        <div class="col-md-8">
-        <div class="card-body">
-            <h5 class="card-title">
-                {{ object.autor.first_name}}
-                {{object.autor.last_name}}
-            </h5>
-        <p class= "small text-muted">
-
-            <a href="{% url 'show_profile' object.autor.perfil.id %}"> Perfil </a> |
-                
-            
-            {% if object.autor.perfil.web_url %}
-                <a href="{{ object.autor.perfil.web_url }}">My web </a> |
+            {% if object.autor.perfil.perfil_imagen %}
+                        
+                <img src="{{ object.autor.perfil.perfil_imagen.url }}" class="card-img" >
+                        
+            {% else %}
+                        
+                <img src="https://180dc.org/wp-content/uploads/2016/08/default-profile.png" class="card-img" >
+                            
             {% endif %}
-
-            {% if object.autor.perfil.fb_url %}
-                <a href="{{ object.autor.perfil.fb_url }}">Facebook </a> |
-            {% endif %} 
-
-            {% if object.autor.perfil.Twitter_url %}
-                <a href="{{ object.autor.perfil.Twitter_url }}">Twitter </a> |
-            {% endif %}  
-
-            {% if object.autor.perfil.Instagram_url %}
-                <a href="{{ object.autor.perfil.Instagram_url }}">Instagram </a> |
-            {% endif %}  
-            
-            {% if object.autor.perfil.github_url %}
-                <a href="{{ object.autor.perfil.github_url }}">Github </a> 
-            {% endif %}
-
-            </p>
-            <p class="card-text">{{ object.autor.perfil.bio }}</p> 
         </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{ object.autor.first_name}}
+                        {{object.autor.last_name}}
+                    </h5>
+                    <p class= "small text-muted">
+                        
+                    <a href="{% url 'show_profile' object.autor.perfil.id %}"> Perfil </a> |
+                                                       
+                    {% if object.autor.perfil.tik_tok %}
+                        <a href="{{ object.autor.perfil.tik_tok }}">Tik Tok </a> |
+                    {% endif %}
+                        
+                    {% if object.autor.perfil.fb_url %}
+                        <a href="{{ object.autor.perfil.fb_url }}">Facebook </a> |
+                    {% endif %} 
+                        
+                    {% if object.autor.perfil.Twitter_url %}
+                        <a href="{{ object.autor.perfil.Twitter_url }}">Twitter </a> |
+                    {% endif %}  
+                        
+                    {% if object.autor.perfil.Instagram_url %}
+                        <a href="{{ object.autor.perfil.Instagram_url }}">Instagram </a> |
+                    {% endif %}  
+                                    
+                    {% if object.autor.perfil.You_Tube %}
+                        <a href="{{ object.autor.perfil.You_Tube }}">You Tube </a> 
+                    {% endif %}
+                        
+                    </p>
+                        <p class="card-text">{{ object.autor.perfil.bio }}</p> 
+                </div>
+            </div>
         </div>
     </div>
-    </div>
-
-    <br/><br/>
-
+                        
+<br/><br/>
+            
+                 
 <hr>
 <h2> Comentarios...</h2>
 <br>
@@ -117,16 +118,15 @@
 <a href="{% url 'agregar-comentario' post.pk %}" >Agregar comentario</a>
 <br>
     {% for comment in post.comments.all %}
-        <strong>
-            <br>
-            {{ comment.name}} -
-            {{ comment.date_added}}
-        </strong>
+    <strong>
         <br>
-        {{ comment.body}}
-        <br/><br/>
-        <hr>
-
+        {{ comment.name}} -
+        {{ comment.date_added}}
+    </strong>
+    <br>
+    {{ comment.body}}
+    <br/><br/>
+    <hr>
     {% endfor %}
     
 {% endif %}

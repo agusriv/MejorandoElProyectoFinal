@@ -7,15 +7,16 @@ from appblog.models import Perfil
 class PerfilPageForm(forms.ModelForm):
     class Meta:
         model = Perfil
-        fields = ('bio', 'perfil_imagen', 'Instagram_url', 'github_url', 'fb_url', 'web_url', 'Twitter_url')
+        fields = ('user', 'bio', 'perfil_imagen', 'Instagram_url', 'tik_tok', 'fb_url', 'You_Tube', 'Twitter_url')
     
         widgets = {
+            'user': forms.Select(attrs={'class' : 'form-control'}),
             'bio': forms.Textarea(attrs={'class' : 'form-control'}),
             #'perfil_imagen': forms.TextInput(attrs={'class' : 'form-control'}),
             'Instagram_url': forms.TextInput(attrs={'class' : 'form-control'}),
-            'github_url': forms.TextInput(attrs={'class' : 'form-control'}),
+            'tik_tok': forms.TextInput(attrs={'class' : 'form-control'}),
             'fb_url': forms.TextInput(attrs={'class' : 'form-control'}),
-            'web_url': forms.TextInput(attrs={'class' : 'form-control'}),
+            'You_Tube': forms.TextInput(attrs={'class' : 'form-control'}),
             'Twitter_url': forms.TextInput(attrs={'class' : 'form-control'}),
         }
 

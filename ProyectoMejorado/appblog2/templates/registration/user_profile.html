@@ -4,59 +4,75 @@
 {% block content %}
 
 
-<h1> Perfil... </h1>
-
-<br/>
-
-<div class="card mb-3" >
-    <div class="row g-0">
-        <div class="col-md-2">
-{% if page_user.perfil_imagen %}
-
-    <img src="{{ page_user.perfil_imagen.url }}" class="card-img" >
-
-{% else %}
-
-    <img src="https://180dc.org/wp-content/uploads/2016/08/default-profile.png" class="card-img" >
-    
-{% endif %}
-        </div>
-        <div class="col-md-10">
-        <div class="card-body">
-            <h5 class="card-title">
-                {{ page_user.user.first_name}}
-                {{page_user.user.last_name}}
-            </h5>
-        <p class= "small text-muted">
-
+    <section class="h-100 gradient-custom-2">
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-lg-9 col-xl-7">
+              <div class="card">
+                <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
+                  <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
+                    {% if page_user.perfil_imagen %}
+                        <img src="{{ page_user.perfil_imagen.url }}"
+                        alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
+                        style="width: 150px; z-index: 1">
+                    {% else %}
+                        <img src="https://180dc.org/wp-content/uploads/2016/08/default-profile.png"
+                        alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
+                        style="width: 150px; z-index: 1">
+                    {% endif %}
+                    <br>
+                    <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
+                      style="z-index: 1;">
+                      <a href="{% url 'edit_profile_page' user.perfil.id %}"> Editar Perfil</a>
+                  </button>
             
-                
+                  </div>
+                  <div class="ms-3" style="margin-top: 130px;">
+                    <h5>{{ page_user.user.first_name}}
+                        {{page_user.user.last_name}}
+                    </h5>
+                        
+                    <center>
+                        <div class="iconos-sociales"></div>
+                        {% if page_user.fb_url %}
+                        <a href="{{ page_user.fb_url }}" target="_blank"><img loading="lazy" alt="Sígueme en Facebook" height="35" width="35" src=" https://1.bp.blogspot.com/-Pop-U7OywXs/YPhkfrImyiI/AAAAAAAAA1Y/UBnVfTK9j2U-bIUqwZYMNSQPvz_l06mbwCPcBGAYYCw/s0/facebook-icono.png" title="Sígueme en Facebook"/></a>
+                        {% endif %} 
             
-            {% if page_user.web_url %}
-                <a href="{{ page_user.web_url }}">My web </a> |
-            {% endif %}
-
-            {% if page_user.fb_url %}
-                <a href="{{ page_user.fb_url }}">Facebook </a> |
-            {% endif %} 
-
-            {% if page_user.Twitter_url %}
-                <a href="{{ page_user.Twitter_url }}">Twitter </a> |
-            {% endif %}  
-
-            {% if page_user.Instagram_url %}
-                <a href="{{ page_user.Instagram_url }}">Instagram </a> |
-            {% endif %}  
+                        {% if page_user.Twitter_url %}
+                        <a href="{{ page_user.Twitter_url }}" target="_blank"><img loading="lazy" alt=" Sígueme en Twitter" height="35" width="35" src=" https://1.bp.blogspot.com/-2JwTJZxg1AU/YPhkfB0DdjI/AAAAAAAAA1c/tDKdU6tS0A0lt4YegGUVd7k-9hguYz82ACPcBGAYYCw/s0/Twitter-icono.png" title="Sígueme en Twitter"/></a>
+                        {% endif %}  
             
-            {% if page_user.github_url %}
-                <a href="{{ page_user.github_url }}">Github </a> 
-            {% endif %}
+                        {% if page_user.Instagram_url %}
+                        <a href="{{ page_user.Instagram_url }}" target="_blank"><img loading="lazy" alt="Sígueme en Instagram" height="35" width="35" src="https://1.bp.blogspot.com/-VFfOISywV0c/YPhkeRXuRQI/AAAAAAAAA1M/L75S9Usg5AovunH2Y-VzqJbaaY1LuK3eACPcBGAYYCw/s0/Instagram-icono.png" title="Sígueme en Instagram"/></a>
+                        {% endif %}  
+                        
+                        {% if page_user.tik_tok %}
+                        <a href="{{ page_user.tik_tok }}" target="_blank"><img loading="lazy" alt="Sígueme en TikTok" height="35" width="35" src=" https://1.bp.blogspot.com/-rK19lcfnq9c/YPhkfuEwAnI/AAAAAAAAA1U/0ydy_rVmboQtu211UQs7_zMXdMih2LCCwCPcBGAYYCw/s0/tiktok-icono-oscuro.png" title="Sígueme en TikTok"/></a>
+                        {% endif %}
 
-            </p>
-            <p class="card-text">{{ page_user.bio }}</p> 
+                        {% if page_user.You_Tube %}
+                        <a href="{{ page_user.You_Tube }}" target="_blank"><img loading="lazy" alt="Sígueme en YouTube" height="35" width="35" src=" https://1.bp.blogspot.com/-0Ao8V_ZtT5Q/YPhkfO0JqkI/AAAAAAAAA1U/Sz5GlaSW78AsY3nZpcqeIoPA_HQUSCVLgCPcBGAYYCw/s0/Youtube-icono.png" title=" Sígueme en YouTube "/></a>
+                        {% endif %}
+                        </div>
+                        </center>
+            
+                  </div>
+                </div>
+                <br><br/>
+                <br>
+                <div class="card-body p-4 text-black">
+                  <div class="mb-5">
+                    <br>
+                    <p class="lead fw-normal mb-1">Bio</p>
+                    <div class="p-4" style="background-color: #e9ecee;">
+                      <p class="font-italic mb-1">{{ page_user.bio }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        </div>
-    </div>
-    </div>
+      </section>
 
 {% endblock %}
